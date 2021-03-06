@@ -14,5 +14,5 @@ public class GBPToPLNController {
         return null;
     }
 
-    //private
+    //private Float getGBPToPLNRate()
 }
