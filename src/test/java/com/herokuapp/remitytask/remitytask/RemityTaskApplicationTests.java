@@ -28,7 +28,9 @@ class RemityTaskApplicationTests {
 
     @Test
     public void testConvertGBPToPLN() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/GBPToPLN/4", Float.class)).isInstanceOf(Float.class);
+        float result = this.restTemplate.getForObject("http://localhost:" + port + "/GBPToPLN/4", Float.class);
+        assertThat(result).isInstanceOf(Float.class);
+        assertThat(result).isGreaterThanOrEqualTo(0.0f);
     }
 
 }

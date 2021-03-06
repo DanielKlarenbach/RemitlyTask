@@ -2,6 +2,7 @@ package com.herokuapp.remitytask.remitytask.Controllers;
 
 import com.herokuapp.remitytask.remitytask.ConsumerModels.ExchangeRates;
 import com.herokuapp.remitytask.remitytask.ConsumerModels.Rate;
+import com.herokuapp.remitytask.remitytask.Exceptions.NBPApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,14 +19,15 @@ public class GBPToPLNController {
     private RestTemplate restTemplate;
 
     @RequestMapping("GBPToPLN/{GBP}")
-    public float convertGBPToPLN(@PathVariable("GBP") float GBP) {
-        ExchangeRates exchangeRates=null;
+    public float convertGBPToPLN(@PathVariable("GBP") float GBP) throws NBPApiException {
+        ExchangeRates exchangeRates = null;
+        Rate rate = null;
         try {
             exchangeRates = this.restTemplate.getForObject("http://api.nbp.pl/api/exchangerates/rates/a/gbp/?format=json", ExchangeRates.class);
-        }catch (RestClientResponseException e) {
-            return null;
+            rate = exchangeRates.getRates().get(0);
+        } catch (RestClientResponseException | NullPointerException e) {
+            throw new NBPApiException(e.getMessage());
         }
-            Rate rate = exchangeRates.getRates().get(0);
         return GBP * rate.getMid();
     }
 

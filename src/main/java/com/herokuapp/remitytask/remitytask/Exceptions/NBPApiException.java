@@ -1,8 +1,8 @@
 package com.herokuapp.remitytask.remitytask.Exceptions;
 
-class NBPApiException extends Exception {
+public class NBPApiException extends Exception {
 
-    NBPApiException(String message) {
+    public NBPApiException(String message) {
         super(message);
     }
 
