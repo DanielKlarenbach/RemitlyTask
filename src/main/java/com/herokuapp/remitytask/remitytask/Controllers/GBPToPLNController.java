@@ -1,5 +1,6 @@
 package com.herokuapp.remitytask.remitytask.Controllers;
 
+import com.herokuapp.remitytask.remitytask.ConsumerModels.ExchangeRates;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,5 +15,7 @@ public class GBPToPLNController {
         return null;
     }
 
-    //private Float getGBPToPLNRate()
+    private Float getGBPToPLNRate(){
+        ExchangeRates exchangeRates
+    }
 }
