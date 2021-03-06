@@ -19,6 +19,8 @@ class RemityTaskApplicationTests {
     }
 
     @Test
-    public void getGBPToPLNRate()
+    public void testGetGBPToPLNRate() throws Exception{
+        assertThat(this.controller.)
+    }
 
 }
