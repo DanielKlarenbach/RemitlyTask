@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class Rate {
     private String no;
     private String effectiveDate;
-    private Float mid;
+    private float mid;
 }
