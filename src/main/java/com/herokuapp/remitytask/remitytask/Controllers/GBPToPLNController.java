@@ -13,4 +13,6 @@ public class GBPToPLNController {
     public Float convertGBPToPLN(@PathVariable("GBP") Float GBP){
         return null;
     }
+
+    //private
 }

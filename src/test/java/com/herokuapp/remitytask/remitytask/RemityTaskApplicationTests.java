@@ -14,8 +14,10 @@ class RemityTaskApplicationTests {
     private GBPToPLNController controller;
 
     @Test
-    void contextLoads() throws Exception {
+    public void contextLoads() throws Exception {
         assertThat(controller).isNotNull();
     }
+
+    //public void testNBPAPI
 
 }
