@@ -18,6 +18,7 @@ class RemityTaskApplicationTests {
         assertThat(controller).isNotNull();
     }
 
-    //public void testNBPAPI
+    @Test
+    public void getGBPToPLNRate()
 
 }

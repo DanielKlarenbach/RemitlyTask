@@ -16,6 +16,6 @@ public class GBPToPLNController {
     }
 
     private Float getGBPToPLNRate(){
-        ExchangeRates exchangeRates
+        return null;
     }
 }
