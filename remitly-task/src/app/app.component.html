@@ -1,21 +1,21 @@
 <form>
   <div class="container-sm top-buffer-20px">
     <div class="form-group">
-      <label for="GBPInput">You send</label>
+      <label for="GBP">You send</label>
       <div class="input-group">
-        <input class="form-control" id="GBPInput" placeholder="GBP" type="text">
+        <input [(ngModel)]="GBP" class="form-control" id="GBP" name="GBP" placeholder="GBP" type="text">
         <div class="input-group-prepend">
           <div class="input-group-text">GBP</div>
         </div>
       </div>
-      <label for="PLNOutput">They receive</label>
+      <label for="PLN">They receive</label>
       <div class="input-group">
-        <input class="form-control" id="PLNOutput" placeholder="PLN" readonly type="text">
+        <input class="form-control" id="PLN" placeholder={{PLN}} readonly type="text">
         <div class="input-group-prepend">
           <div class="input-group-text">PLN</div>
         </div>
       </div>
     </div>
-    <button class="btn btn-primary" type="submit">Convert</button>
+    <button (click)="convertGBPToPLN()" class="btn btn-primary" type="submit">Convert</button>
   </div>
 </form>
