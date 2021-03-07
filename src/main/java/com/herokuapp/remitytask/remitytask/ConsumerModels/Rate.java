@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @NoArgsConstructor
-public class Rate {
+public class ExchangeRate {
     private String no;
     private String effectiveDate;
     private float mid;

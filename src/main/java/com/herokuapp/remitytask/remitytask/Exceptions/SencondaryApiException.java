@@ -7,6 +7,6 @@ public class NBPApiException extends Exception {
     }
 
     public String toString() {
-        return ("Exception occured due to error in NBP api" + this.getMessage());
+        return ("Exception occurred due to error in secondary api: " + this.getMessage());
     }
 }
