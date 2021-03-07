@@ -1,34 +1,35 @@
 package com.herokuapp.remitytask.remitytask.Controllers;
 
-import com.herokuapp.remitytask.remitytask.ConsumerModels.ExchangeRates;
+
 import com.herokuapp.remitytask.remitytask.ConsumerModels.Rate;
-import com.herokuapp.remitytask.remitytask.Exceptions.NBPApiException;
+import com.herokuapp.remitytask.remitytask.Exceptions.SencondaryApiException;
+import com.herokuapp.remitytask.remitytask.Services.NBPApiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestClientResponseException;
-import org.springframework.web.client.RestTemplate;
+
+import javax.validation.constraints.Pattern;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @RestController
 @CrossOrigin
+@Validated
 public class GBPToPLNController {
 
     @Autowired
-    private RestTemplate restTemplate;
+    private NBPApiService NBPApiService;
 
-    @RequestMapping("GBPToPLN/{GBP}")
-    public float convertGBPToPLN(@PathVariable("GBP") float GBP) throws NBPApiException {
-        ExchangeRates exchangeRates = null;
-        Rate rate = null;
-        try {
-            exchangeRates = this.restTemplate.getForObject("http://api.nbp.pl/api/exchangerates/rates/a/gbp/?format=json", ExchangeRates.class);
-            rate = exchangeRates.getRates().get(0);
-        } catch (RestClientResponseException | NullPointerException e) {
-            throw new NBPApiException(e.getMessage());
-        }
-        return GBP * rate.getMid();
+    @GetMapping("GBPToPLN/{GBP}")
+    public BigDecimal convertGBPToPLN(@Pattern(regexp = "^\\s*([0-9]+\\.[0-9]{1,2})|([0-9]+)\\s*$") @PathVariable("GBP") String GBP) throws SencondaryApiException {
+        Rate rate = NBPApiService.getExchangeRate();
+        BigDecimal GBPBigDecimal = new BigDecimal(GBP);
+        BigDecimal result = GBPBigDecimal.multiply(rate.getMid());
+        result = result.setScale(2, RoundingMode.HALF_UP);
+        return result;
     }
 
 }

@@ -9,9 +9,9 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @NoArgsConstructor
-public class ExchangeRates {
+public class Currency {
     private String table;
     private String currency;
-    private String Code;
+    private String code;
     private List<Rate> rates;
 }

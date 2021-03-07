@@ -1,8 +1,10 @@
 package com.herokuapp.remitytask.remitytask.Exceptions;
 
-public class NBPApiException extends Exception {
+import java.io.IOException;
 
-    public NBPApiException(String message) {
+public class SencondaryApiException extends IOException {
+
+    public SencondaryApiException(String message) {
         super(message);
     }
 
