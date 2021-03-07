@@ -3,7 +3,7 @@ package com.herokuapp.remitytask.remitytask.Services;
 import com.herokuapp.remitytask.remitytask.ConsumerModels.Currency;
 import com.herokuapp.remitytask.remitytask.ConsumerModels.Rate;
 import com.herokuapp.remitytask.remitytask.Exceptions.SencondaryApiException;
-import com.herokuapp.remitytask.remitytask.RestTemplateResponseErrorHandler;
+import com.herokuapp.remitytask.remitytask.ErrorHandlers.RTRestTemplateResponseErrorHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class NBPApiService {
     @Autowired
     public NBPApiService(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder
-                .errorHandler(new RestTemplateResponseErrorHandler())
+                .errorHandler(new RTRestTemplateResponseErrorHandler())
                 .build();
     }
 
