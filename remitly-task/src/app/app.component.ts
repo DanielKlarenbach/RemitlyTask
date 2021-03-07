@@ -15,8 +15,12 @@ export class AppComponent {
 
   convertGBPToPLN(){
     let obs = this.http.get<number>('http://localhost:8080/GBPToPLN/'+this.GBP.toString());
-    obs.subscribe((response) => {
-      this.PLN = response;
-    });
+    obs.subscribe(
+      response => this.PLN = response,
+      error => {
+        console.log(error);
+        alert(error.error.message);
+      }
+    );
   }
 }
