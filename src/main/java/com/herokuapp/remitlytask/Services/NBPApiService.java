@@ -1,9 +1,9 @@
-package com.herokuapp.remitytask.remitytask.Services;
+package com.herokuapp.remitytask.remitlytask.Services;
 
-import com.herokuapp.remitytask.remitytask.ConsumerModels.Currency;
-import com.herokuapp.remitytask.remitytask.ConsumerModels.Rate;
-import com.herokuapp.remitytask.remitytask.Exceptions.SencondaryApiException;
-import com.herokuapp.remitytask.remitytask.ErrorHandlers.RTRestTemplateResponseErrorHandler;
+import com.herokuapp.remitytask.remitlytask.ConsumerModels.Currency;
+import com.herokuapp.remitytask.remitlytask.ConsumerModels.Rate;
+import com.herokuapp.remitytask.remitlytask.Exceptions.SencondaryApiException;
+import com.herokuapp.remitytask.remitlytask.ErrorHandlers.RTRestTemplateResponseErrorHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;

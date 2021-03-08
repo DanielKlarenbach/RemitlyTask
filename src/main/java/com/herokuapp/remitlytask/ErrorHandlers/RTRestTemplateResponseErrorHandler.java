@@ -1,6 +1,6 @@
-package com.herokuapp.remitytask.remitytask.ErrorHandlers;
+package com.herokuapp.remitytask.remitlytask.ErrorHandlers;
 
-import com.herokuapp.remitytask.remitytask.Exceptions.SencondaryApiException;
+import com.herokuapp.remitytask.remitlytask.Exceptions.SencondaryApiException;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 

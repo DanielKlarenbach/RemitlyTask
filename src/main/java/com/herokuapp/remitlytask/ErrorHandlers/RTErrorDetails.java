@@ -1,4 +1,4 @@
-package com.herokuapp.remitytask.remitytask.ErrorHandlers;
+package com.herokuapp.remitytask.remitlytask.ErrorHandlers;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

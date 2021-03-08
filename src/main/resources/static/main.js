@@ -68,7 +68,7 @@ class AppComponent {
         this.PLN = 0;
     }
     convertGBPToPLN() {
-        let obs = this.http.get(this.baseUrl + this.GBP.toString());
+        let obs = this.http.get(this.baseUrl + 'GBPToPLN/' + this.GBP.toString());
         obs.subscribe(response => this.PLN = response, error => {
             console.log(error);
             alert(error.error.message);

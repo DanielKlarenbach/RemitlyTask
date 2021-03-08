@@ -16,7 +16,7 @@ export class AppComponent {
   constructor(private http: HttpClient) { }
 
   convertGBPToPLN(){
-    let obs = this.http.get<number>(this.baseUrl+this.GBP.toString());
+    let obs = this.http.get<number>(this.baseUrl+'GBPToPLN/'+this.GBP.toString());
     obs.subscribe(
       response => this.PLN = response,
       error => {

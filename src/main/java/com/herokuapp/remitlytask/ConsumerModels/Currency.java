@@ -1,4 +1,4 @@
-package com.herokuapp.remitytask.remitytask.ConsumerModels;
+package com.herokuapp.remitytask.remitlytask.ConsumerModels;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

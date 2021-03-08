@@ -1,9 +1,9 @@
-package com.herokuapp.remitytask.remitytask.Controllers;
+package com.herokuapp.remitytask.remitlytask.Controllers;
 
 
-import com.herokuapp.remitytask.remitytask.ConsumerModels.Rate;
-import com.herokuapp.remitytask.remitytask.Exceptions.SencondaryApiException;
-import com.herokuapp.remitytask.remitytask.Services.NBPApiService;
+import com.herokuapp.remitytask.remitlytask.ConsumerModels.Rate;
+import com.herokuapp.remitytask.remitlytask.Exceptions.SencondaryApiException;
+import com.herokuapp.remitytask.remitlytask.Services.NBPApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
