@@ -1,16 +1,16 @@
 <form>
   <div class="container-sm top-buffer-20px">
     <div class="form-group">
-      <label for="GBP">You send</label>
+      <label for="GBP">Enter GBP:</label>
       <div class="input-group">
-        <input (change)="setCurrencyToConvert($event)" [(ngModel)]="GBP" class="form-control" id="GBP" name="GBP" placeholder="GBP" type="text">
+        <input (change)="setCurrencyToConvert($event)" [(ngModel)]="GBP" class="form-control" id="GBP" name="GBP" placeholder="GBP" type="text" autocomplete="off">
         <div class="input-group-prepend">
           <div class="input-group-text">GBP</div>
         </div>
       </div>
-      <label for="PLN">They receive</label>
+      <label for="PLN">Enter PLN:</label>
       <div class="input-group">
-        <input (change)="setCurrencyToConvert($event)" [(ngModel)]="PLN" class="form-control" id="PLN" name="PLN" placeholder="PLN" type="text">
+        <input (change)="setCurrencyToConvert($event)" [(ngModel)]="PLN" class="form-control" id="PLN" name="PLN" placeholder="PLN" type="text" autocomplete="off">
         <div class="input-group-prepend">
           <div class="input-group-text">PLN</div>
         </div>
