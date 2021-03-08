@@ -1,4 +1,4 @@
-# RemityTask
+# RemitlyTask
 
 # How to use:
 Simply visit: https://remitlytask.herokuapp.com/ <br>

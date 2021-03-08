@@ -66,6 +66,19 @@ class AppComponent {
         this.title = 'remitly-task';
         this.GBP = 0;
         this.PLN = 0;
+        this.currencyToConvert = ' GBP';
+    }
+    setCurrencyToConvert(event) {
+        // @ts-ignore
+        this.currencyToConvert = event.target.id;
+    }
+    convert() {
+        if (this.currencyToConvert == 'GBP') {
+            this.convertGBPToPLN();
+        }
+        else {
+            this.convertPLNToGBP();
+        }
     }
     convertGBPToPLN() {
         let obs = this.http.get(this.baseUrl + 'GBPToPLN/' + this.GBP.toString());
@@ -83,7 +96,7 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 19, vars: 2, consts: [[1, "container-sm", "top-buffer-20px"], [1, "form-group"], ["for", "GBP"], [1, "input-group"], ["id", "GBP", "name", "GBP", "placeholder", "GBP", "type", "text", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "input-group-prepend"], [1, "input-group-text"], ["for", "PLN"], ["id", "PLN", "name", "PLN", "placeholder", "PLN", "type", "text", 1, "form-control", 3, "ngModel", "ngModelChange"], ["type", "submit", 1, "btn", "btn-primary", 3, "click"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 19, vars: 2, consts: [[1, "container-sm", "top-buffer-20px"], [1, "form-group"], ["for", "GBP"], [1, "input-group"], ["id", "GBP", "name", "GBP", "placeholder", "GBP", "type", "text", 1, "form-control", 3, "ngModel", "change", "ngModelChange"], [1, "input-group-prepend"], [1, "input-group-text"], ["for", "PLN"], ["id", "PLN", "name", "PLN", "placeholder", "PLN", "type", "text", 1, "form-control", 3, "ngModel", "change", "ngModelChange"], ["type", "submit", 1, "btn", "btn-primary", 3, "click"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "form");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 1);
@@ -92,7 +105,7 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineCompo
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "div", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "input", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_6_listener($event) { return ctx.GBP = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function AppComponent_Template_input_change_6_listener($event) { return ctx.setCurrencyToConvert($event); })("ngModelChange", function AppComponent_Template_input_ngModelChange_6_listener($event) { return ctx.GBP = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "div", 6);
@@ -105,7 +118,7 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineCompo
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "div", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "input", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_13_listener($event) { return ctx.PLN = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("change", function AppComponent_Template_input_change_13_listener($event) { return ctx.setCurrencyToConvert($event); })("ngModelChange", function AppComponent_Template_input_ngModelChange_13_listener($event) { return ctx.PLN = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](14, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "div", 6);
@@ -115,7 +128,7 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineCompo
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](17, "button", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function AppComponent_Template_button_click_17_listener() { return ctx.convertGBPToPLN(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function AppComponent_Template_button_click_17_listener() { return ctx.convert(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, "Convert");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Component} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {environment} from "../environments/environment";
 
 @Component({
@@ -10,13 +10,29 @@ import {environment} from "../environments/environment";
 export class AppComponent {
   baseUrl = environment.baseUrl;
   title = 'remitly-task';
-  GBP : number = 0;
-  PLN : number = 0;
+  GBP: number = 0;
+  PLN: number = 0;
+  currencyToConvert: String = ' GBP';
 
-  constructor(private http: HttpClient) { }
 
-  convertGBPToPLN(){
-    let obs = this.http.get<number>(this.baseUrl+'GBPToPLN/'+this.GBP.toString());
+  constructor(private http: HttpClient) {
+  }
+
+  setCurrencyToConvert(event: Event) {
+    // @ts-ignore
+    this.currencyToConvert = event.target.id;
+  }
+
+  convert() {
+    if (this.currencyToConvert == 'GBP') {
+      this.convertGBPToPLN();
+    } else {
+      this.convertPLNToGBP();
+    }
+  }
+
+  convertGBPToPLN() {
+    let obs = this.http.get<number>(this.baseUrl + 'GBPToPLN/' + this.GBP.toString());
     obs.subscribe(
       response => this.PLN = response,
       error => {
@@ -26,8 +42,8 @@ export class AppComponent {
     );
   }
 
-  convertPLNToGBP(){
-    let obs = this.http.get<number>(this.baseUrl+'PLNToGBP/'+this.PLN.toString());
+  convertPLNToGBP() {
+    let obs = this.http.get<number>(this.baseUrl + 'PLNToGBP/' + this.PLN.toString());
     obs.subscribe(
       response => this.GBP = response,
       error => {

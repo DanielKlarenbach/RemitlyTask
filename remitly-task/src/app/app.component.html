@@ -3,19 +3,19 @@
     <div class="form-group">
       <label for="GBP">You send</label>
       <div class="input-group">
-        <input [(ngModel)]="GBP" class="form-control" id="GBP" name="GBP" placeholder="GBP" type="text">
+        <input (change)="setCurrencyToConvert($event)" [(ngModel)]="GBP" class="form-control" id="GBP" name="GBP" placeholder="GBP" type="text">
         <div class="input-group-prepend">
           <div class="input-group-text">GBP</div>
         </div>
       </div>
       <label for="PLN">They receive</label>
       <div class="input-group">
-        <input [(ngModel)]="PLN" class="form-control" id="PLN" name="PLN" placeholder="PLN" type="text">
+        <input (change)="setCurrencyToConvert($event)" [(ngModel)]="PLN" class="form-control" id="PLN" name="PLN" placeholder="PLN" type="text">
         <div class="input-group-prepend">
           <div class="input-group-text">PLN</div>
         </div>
       </div>
     </div>
-    <button (click)="convertGBPToPLN()" class="btn btn-primary" type="submit">Convert</button>
+    <button (click)="convert()" class="btn btn-primary" type="submit">Convert</button>
   </div>
 </form>
