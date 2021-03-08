@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {environment} from "../environments/environment";
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  baseUrl = environment.baseUrl;
   title = 'remitly-task';
   GBP : number = 0;
   PLN : number = 0;
@@ -14,7 +16,7 @@ export class AppComponent {
   constructor(private http: HttpClient) { }
 
   convertGBPToPLN(){
-    let obs = this.http.get<number>('http://localhost:8080/GBPToPLN/'+this.GBP.toString());
+    let obs = this.http.get<number>(this.baseUrl+this.GBP.toString());
     obs.subscribe(
       response => this.PLN = response,
       error => {
