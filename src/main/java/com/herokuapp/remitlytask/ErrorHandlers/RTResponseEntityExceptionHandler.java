@@ -25,7 +25,7 @@ public class RTResponseEntityExceptionHandler extends ResponseEntityExceptionHan
 
     @ExceptionHandler(ConstraintViolationException.class)
     public final ResponseEntity<RTErrorDetails> handleConstraintViolationException(ConstraintViolationException ex, WebRequest request) {
-        RTErrorDetails RTErrorDetails = new RTErrorDetails(new Date(),"Wrong format of GBP input value.",
+        RTErrorDetails RTErrorDetails = new RTErrorDetails(new Date(),"Wrong currency input format.",
                 request.getDescription(false));
         return new ResponseEntity<>(RTErrorDetails, HttpStatus.UNPROCESSABLE_ENTITY);
     }
