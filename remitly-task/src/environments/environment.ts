@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:4200/'};
+  baseUrl: 'https://remitlytask.herokuapp.com/'};
 
 /*
  * For easier debugging in development mode, you can import the following file
