@@ -1,7 +1,7 @@
 package com.herokuapp.remitlytask;
 
 import com.herokuapp.remitlytask.ConsumerModels.Rate;
-import com.herokuapp.remitlytask.Controllers.GBPToPLNController;
+import com.herokuapp.remitlytask.Controllers.ConversionController;
 import com.herokuapp.remitlytask.Services.NBPApiService;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -22,8 +22,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-@WebMvcTest(value = GBPToPLNController.class)
-public class GBPToPLNControllerTests {
+@WebMvcTest(value = ConversionController.class)
+public class ConversionControllerTests {
 
     @Autowired
     private MockMvc mockMvc;

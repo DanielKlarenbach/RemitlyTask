@@ -25,4 +25,16 @@ export class AppComponent {
       }
     );
   }
+
+  convertPLNToGBP(){
+    let obs = this.http.get<number>(this.baseUrl+'PLNToGBP/'+this.PLN.toString());
+    obs.subscribe(
+      response => this.GBP = response,
+      error => {
+        console.log(error);
+        alert(error.error.message);
+      }
+    );
+  }
+
 }
