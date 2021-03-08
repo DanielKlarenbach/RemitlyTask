@@ -92,7 +92,7 @@ public class ConversionControllerTests {
         MockHttpServletResponse response = result.getResponse();
 
         assertEquals(HttpStatus.UNPROCESSABLE_ENTITY.value(),response.getStatus());
-        assertThat(response.getContentAsString()).contains("\"message\":\"Wrong format of GBP input value.\"");
+        assertThat(response.getContentAsString()).contains("\"message\":\"Wrong currency input format.\"");
     }
 
     @Test
@@ -103,7 +103,82 @@ public class ConversionControllerTests {
         MockHttpServletResponse response = result.getResponse();
 
         assertEquals(HttpStatus.UNPROCESSABLE_ENTITY.value(),response.getStatus());
-        assertThat(response.getContentAsString()).contains("\"message\":\"Wrong format of GBP input value.\"");
+        assertThat(response.getContentAsString()).contains("\"message\":\"Wrong currency input format.\"");
+    }
+
+    @Test
+    public void convertPLNToGBPShouldNotReturnNull() throws Exception {
+        when(NBPApiService.getExchangeRate()).thenReturn(rate);
+        float PLN = 4;
+        MvcResult result = this.mockMvc.perform(get("/PLNToGBP/"+String.valueOf(PLN))).andReturn();
+
+        assertThat(result).isNotNull();
+    }
+
+    @Test
+    public void convertPLNToGBPTakesIntegerGBPFormat() throws Exception {
+        when(NBPApiService.getExchangeRate()).thenReturn(rate);
+        int PLN = 4;
+        MvcResult result = this.mockMvc.perform(get("/PLNToGBP/"+String.valueOf(PLN))).andReturn();
+        MockHttpServletResponse response = result.getResponse();
+
+        assertTrue(HttpStatus.valueOf(response.getStatus()).is2xxSuccessful());
+    }
+
+    @Test
+    public void convertPLNToGBPTakesFloatGBPFormat() throws Exception {
+        when(NBPApiService.getExchangeRate()).thenReturn(rate);
+        float PLN = 4.52f;
+        MvcResult result = this.mockMvc.perform(get("/PLNToGBP/"+String.valueOf(PLN))).andReturn();
+        MockHttpServletResponse response = result.getResponse();
+
+        assertTrue(HttpStatus.valueOf(response.getStatus()).is2xxSuccessful());
+    }
+
+    @Test
+    public void convertPLNToGBPReturnsFloatGBPFormat() throws Exception {
+        when(NBPApiService.getExchangeRate()).thenReturn(rate);
+        float PLN = 2f;
+        MvcResult result = this.mockMvc.perform(get("/PLNToGBP/"+String.valueOf(PLN))).andReturn();
+        MockHttpServletResponse response = result.getResponse();
+
+        assertTrue(response.getContentAsString().matches("^[0-9]+\\.[0-9]{2}$"));
+    }
+
+    @Test
+    public void convertPLNToGBPRoundsResultCorrectly() throws Exception {
+        when(NBPApiService.getExchangeRate()).thenReturn(rate);
+        float PLNFloor = 5;
+        float PLNCelling =4;
+        MvcResult resultFloor = this.mockMvc.perform(get("/PLNToGBP/"+String.valueOf(PLNFloor))).andReturn();
+        MvcResult resultCelling = this.mockMvc.perform(get("/PLNToGBP/"+String.valueOf(PLNCelling))).andReturn();
+
+        JSONAssert.assertEquals(resultFloor.getResponse()
+                .getContentAsString(), "0.93",false);
+        JSONAssert.assertEquals(resultCelling.getResponse()
+                .getContentAsString(), "0.75",false);
+    }
+
+    @Test
+    public void convertPLNToGBPDoesNotTakeNegativeGBP() throws Exception {
+        when(NBPApiService.getExchangeRate()).thenReturn(rate);
+        float PLN = -4;
+        MvcResult result = this.mockMvc.perform(get("/PLNToGBP/"+String.valueOf(PLN))).andReturn();
+        MockHttpServletResponse response = result.getResponse();
+
+        assertEquals(HttpStatus.UNPROCESSABLE_ENTITY.value(),response.getStatus());
+        assertThat(response.getContentAsString()).contains("\"message\":\"Wrong currency input format.\"");
+    }
+
+    @Test
+    public void convertPLNToGBPDoesNotTakeGBPWithMoreThanTwoNumbersAfterComma() throws Exception {
+        when(NBPApiService.getExchangeRate()).thenReturn(rate);
+        float PLN = 4.5666f;
+        MvcResult result = this.mockMvc.perform(get("/GBPToPLN/"+String.valueOf(PLN))).andReturn();
+        MockHttpServletResponse response = result.getResponse();
+
+        assertEquals(HttpStatus.UNPROCESSABLE_ENTITY.value(),response.getStatus());
+        assertThat(response.getContentAsString()).contains("\"message\":\"Wrong currency input format.\"");
     }
 }
 
