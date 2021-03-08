@@ -14,7 +14,6 @@
     <name>remity-task</name>
     <description>Job opening task for Remity</description>
     <properties>
-        <java.version>11</java.version>
     </properties>
     <dependencies>
         <dependency>
