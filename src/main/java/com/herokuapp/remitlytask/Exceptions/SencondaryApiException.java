@@ -1,4 +1,4 @@
-package com.herokuapp.remitytask.remitlytask.Exceptions;
+package com.herokuapp.remitlytask.Exceptions;
 
 import java.io.IOException;
 

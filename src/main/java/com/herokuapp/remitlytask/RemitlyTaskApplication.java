@@ -1,4 +1,4 @@
-package com.herokuapp.remitytask.remitlytask;
+package com.herokuapp.remitlytask;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

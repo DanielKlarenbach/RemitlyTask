@@ -1,8 +1,8 @@
-package com.herokuapp.remitytask.remitlytask;
+package com.herokuapp.remitlytask;
 
-import com.herokuapp.remitytask.remitlytask.ConsumerModels.Rate;
-import com.herokuapp.remitytask.remitlytask.Controllers.GBPToPLNController;
-import com.herokuapp.remitytask.remitlytask.Services.NBPApiService;
+import com.herokuapp.remitlytask.ConsumerModels.Rate;
+import com.herokuapp.remitlytask.Controllers.GBPToPLNController;
+import com.herokuapp.remitlytask.Services.NBPApiService;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
